@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>assembly</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+   
+    <dependencySets>
+        <dependencySet>
+            <!-- 不使用项目的artifact，第三方jar不要解压，打包进zip文件的lib目录 -->  
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
+            <scope>runtime</scope>
+            <unpack>false</unpack>
+        </dependencySet>
+    </dependencySets>
+     <fileSets>
+        <fileSet>
+            <directory>src/main/resources/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>*.sh</include>
+            </includes>
+            <fileMode>0755</fileMode>  
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources/config</directory>
+            <outputDirectory>config</outputDirectory>
+        </fileSet>
+        
+        <!-- 指定发行配置覆盖文件目录 -->
+        <fileSet>
+            <directory>src/main/resources/${defaultConfig}</directory>
+            <outputDirectory>config</outputDirectory>
+        </fileSet>
+        
+        <!-- 把项目的配置文件，打包进tar.gz文件的config目录 -->  
+        <fileSet>  
+            <directory>${project.basedir}/src/main/resources</directory>  
+            <outputDirectory>config</outputDirectory>  
+            <includes>
+                <include>**/*.xml</include>  
+                 <include>**/*.properties</include> 
+                <include>application.yml</include>
+                <include>application-${environment}.yml</include>
+            </includes>
+            <filtered>true</filtered>
+            <excludes>
+                <exclude>build.xml</exclude>
+            </excludes>
+        </fileSet> 
+       
+        <!-- 把项目自己编译出来的jar文件，打包进zip文件的根目录 -->  
+        <fileSet>  
+            <directory>${project.build.directory}</directory>  
+            <outputDirectory>bin</outputDirectory>  
+            <includes>  
+                <include>*.jar</include>  
+            </includes>  
+        </fileSet>  
+    </fileSets>
+</assembly>

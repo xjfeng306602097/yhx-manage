@@ -1,0 +1,27 @@
+server:
+  port: 8088
+spring: 
+  application:
+    name: yhx-manage
+  profiles:
+    active:
+    - '@environment@'
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+mybatis:
+  mapper-locations: 
+  - classpath*:mapper/**/*.xml  
+mapper:
+  not-empty: false
+  identity: MYSQL
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
+  params: count=countSql
+management:
+  security:
+    enabled: false
+yhx:
+  profiles:
+    active: debug

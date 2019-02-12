@@ -1,0 +1,65 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      url: jdbc:mysql://localhost:13306/yhx-mall?useUnicode=true&characterEncoding=UTF8
+      username: root
+      password: abcd1234
+      initial-size: 1
+      max-active: 20
+      min-idle: 1
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+  redis:
+    host: 192.168.0.57
+    port: 6379
+    password: "X0a#_2q5j4_mYQB_b840fc02d524045429941cc15f59e41cb7be6c52"
+    jedis:
+      pool:
+        max-idle: 8
+        max-active: 8
+        min-idle: 0
+        max-wait: 1s
+task:
+  pool:
+    size: 2
+  dispatch: 
+    cron: 0/30 * * * * ?
+localhost: 
+  domain: localhost
+name: 
+  productName: 优惠精选
+verif: 
+  counts: 1
+  dayCounts: 100
+redisson:
+  timeout: 5000
+  address: 192.168.0.57:6379
+  password: "X0a#_2q5j4_mYQB_b840fc02d524045429941cc15f59e41cb7be6c52"
+async:
+  executor:
+    thread :
+      core_pool_size: 6
+      max_pool_size: 6
+      queue_capacity: 9999
+      name:
+        prefix: async-service-

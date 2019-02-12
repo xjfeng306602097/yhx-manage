@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.yhx</groupId>
-    <artifactId>order</artifactId>
+    <artifactId>manage</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>order</name>
+    <name>manage</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

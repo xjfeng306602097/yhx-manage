@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yhx.manage.user.dao.UserPidMapper">
-    <resultMap id="BaseResultMap" type="com.yhx.manage.user.model.UserPid">
+<mapper namespace="com.yhx.user.dao.UserPidMapper">
+    <resultMap id="BaseResultMap" type="com.yhx.user.model.UserPid">
         <!--
           WARNING - @mbg.generated
         -->

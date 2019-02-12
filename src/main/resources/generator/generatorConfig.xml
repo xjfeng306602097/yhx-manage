@@ -21,11 +21,11 @@
                         password="abcd1234">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.yhx.manage.user.model" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.yhx.user.model" targetProject="src/main/java"/>
 
         <sqlMapGenerator targetPackage="mapper.user"  targetProject="src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.yhx.manage.user.dao" targetProject="src/main/java" type="XMLMAPPER" />
+        <javaClientGenerator targetPackage="com.yhx.user.dao" targetProject="src/main/java" type="XMLMAPPER" />
 
         <table tableName="t_pid" domainObjectName="UserPid">
            <!-- <generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->

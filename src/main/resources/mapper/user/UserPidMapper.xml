@@ -17,4 +17,12 @@
 		pid,version,status,type,create_time,update_time
     </sql>
 
+    <insert id="batchSavePid" parameterType="java.util.List">
+        insert into t_pid (pid, `type`)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.pid,jdbcType=VARCHAR}, #{item.type,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+
 </mapper>

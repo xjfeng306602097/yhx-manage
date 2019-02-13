@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yhx.sys.dao.SysParameterMapper">
-  <resultMap id="BaseResultMap" type="com.yhx.sys.model.SysParameter">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="param_name" jdbcType="VARCHAR" property="paramName" />
-    <result column="param_value" jdbcType="VARCHAR" property="paramValue" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
-    <result column="status" jdbcType="BIT" property="status" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.yhx.sys.model.SysParameter">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="param_name" jdbcType="VARCHAR" property="paramName"/>
+        <result column="param_value" jdbcType="VARCHAR" property="paramValue"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="VARCHAR" property="updateUser"/>
+        <result column="status" jdbcType="BIT" property="status"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+    </resultMap>
+
+    <select id="selectParam"
+            resultType="com.yhx.sys.model.SysParameter">
+        SELECT
+        a.id AS id,
+        a.param_name AS paramName,
+        a.param_value AS paramValue
+        FROM
+        t_sys_parameter a
+        <where>
+            <if test="paramName != null">
+                a.param_name = '${paramName}'
+            </if>
+        </where>
+    </select>
 </mapper>

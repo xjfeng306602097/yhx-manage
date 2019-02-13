@@ -6,10 +6,7 @@ import com.yhx.common.exception.BaseException;
 import com.yhx.user.service.UserPidService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/back/{version}/pid")
@@ -20,8 +17,8 @@ public class UserPidController {
     @Autowired
     private UserPidService userPidService;
 
-    @PostMapping("/create/nameprefix/{nameprefix}/start/{start}/end/{end}")
-    public BaseResponse<?> createPid(@PathVariable(value = "nameprefix") String namePrefix, @PathVariable(value = "start") int start, @PathVariable(value = "end") int end) {
+    @PostMapping("/create")
+    public BaseResponse<?> createPid(@RequestParam(name = "namePrefix") String namePrefix, @RequestParam(name = "start") int start, @RequestParam(name = "end") int end) {
         try {
             userPidService.createUserPid(namePrefix, start, end);
             return BaseResponse.success();
@@ -29,6 +26,16 @@ public class UserPidController {
             return BaseResponse.fail(e.getCode(), e.getMessage());
         } catch (Exception e1) {
             return BaseResponse.fail(500, e1.getMessage());
+        }
+    }
+
+    @GetMapping("/sync")
+    public BaseResponse<?> syncPid() {
+        try {
+            userPidService.syncJDPid();
+            return BaseResponse.success();
+        } catch (Exception e) {
+            return BaseResponse.fail(500, e.getMessage());
         }
     }
 

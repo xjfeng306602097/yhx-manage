@@ -42,13 +42,13 @@ spring:
 task:
   pool:
     size: 2
-  dispatch: 
+  dispatch:
     cron: 0/30 * * * * ?
-localhost: 
+localhost:
   domain: localhost
-name: 
+name:
   productName: 优惠精选
-verif: 
+verif:
   counts: 1
   dayCounts: 100
 redisson:
@@ -57,7 +57,7 @@ redisson:
   password: "X0a#_2q5j4_mYQB_b840fc02d524045429941cc15f59e41cb7be6c52"
 async:
   executor:
-    thread :
+    thread:
       core_pool_size: 6
       max_pool_size: 6
       queue_capacity: 9999

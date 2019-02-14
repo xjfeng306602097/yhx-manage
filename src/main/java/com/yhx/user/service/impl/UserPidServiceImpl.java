@@ -81,9 +81,8 @@ public class UserPidServiceImpl extends BaseServiceImpl<UserPidMapper, UserPid> 
             JSONObject pidItem = array.getJSONObject(i);
             if (pidItem.getIntValue("type") != 5) {
                 String id = pidItem.getString("id");
-                String siteId = pidItem.getString("siteId");
                 UserPid userPid = new UserPid();
-                userPid.setPid(unionId + "_" + siteId + "_" + id);
+                userPid.setPid(id);
                 userPid.setType(1);
                 userPids.add(userPid);
             }

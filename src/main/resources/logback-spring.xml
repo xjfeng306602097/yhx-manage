@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" scanPeriod="60 seconds" debug="false">
+<configuration scan="true" scanPeriod="60 seconds" debug="true">
 
     <contextName>cmp-nice-order</contextName>
     <property name="logback.logdir" value="/data/logs/cmp-nice-order/log"/>

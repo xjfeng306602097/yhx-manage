@@ -35,6 +35,7 @@ public class UserPidController {
             userPidService.syncJDPid();
             return BaseResponse.success();
         } catch (Exception e) {
+            log.error("UserPidController>syncPid error:" + e.getMessage());
             return BaseResponse.fail(500, e.getMessage());
         }
     }

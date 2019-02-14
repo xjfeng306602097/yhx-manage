@@ -51,7 +51,11 @@ public class UserPidServiceImpl extends BaseServiceImpl<UserPidMapper, UserPid> 
         boolean isContinue = true;
         while(isContinue) {
             page++;
-            isContinue = syncUserPidByPage(page);
+            try {
+                isContinue = syncUserPidByPage(page);
+            } catch (Exception e) {
+                continue;
+            }
         }
     }
 

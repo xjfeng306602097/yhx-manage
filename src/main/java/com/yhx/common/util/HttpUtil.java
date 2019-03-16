@@ -1,7 +1,7 @@
 package com.yhx.common.util;
 
-import com.duoman.uitl.StringUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -16,7 +16,7 @@ public class HttpUtil {
 
 	/**
 	 * 向指定URL发送GET方法的请求
-	 * 
+	 *
 	 * @param url
 	 *            发送请求的URL
 	 * @param param
@@ -28,7 +28,7 @@ public class HttpUtil {
 		BufferedReader in = null;
 		try {
 			String urlNameString = url
-					+ (StringUtil.hasValue(param) ? "?" + param : "");
+					+ (StringUtils.isNotEmpty(param) ? "?" + param : "");
 			URL realUrl = new URL(urlNameString);
 			// 打开和URL之间的连接
 			URLConnection connection = realUrl.openConnection();
@@ -62,7 +62,7 @@ public class HttpUtil {
 		}
 		return result;
 	}
-	
+
 	public static void main(String[] args) {
 		String url = "http://localhost:8080/bms/sysParameter/listData.do";
 		String result = sendGet(url);
@@ -71,7 +71,7 @@ public class HttpUtil {
 
 	/**
 	 * 向指定 URL 发送POST方法的请求
-	 * 
+	 *
 	 * @param url
 	 *            发送请求的 URL
 	 * @param param
@@ -84,7 +84,7 @@ public class HttpUtil {
 
 	/**
 	 * 向指定 URL 发送POST方法的请求
-	 * 
+	 *
 	 * @param url
 	 *            发送请求的 URL
 	 * @param param
@@ -105,7 +105,7 @@ public class HttpUtil {
 			conn.setRequestProperty("connection", "Keep-Alive");
 			conn.setRequestProperty("user-agent",
 					"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-			if (StringUtil.hasValue(contentType))
+			if (StringUtils.isNotEmpty(contentType))
 				conn.setRequestProperty("Content-Type", contentType);
 			// conn.setRequestProperty("auth",
 			// "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxIiwiand0VG9rZW4iOiI1MEQyNkU5RS1DMEE1LTQ0Q0EtQjAxRi01MkJGODlFQ0M4MDgiLCJleHAiOjE0NzE0MTU0MTUsImlhdCI6MTQ3MTQxMzYxNX0.LbpeTL1YI98B19SnxjdoxWerFY2o6pcJ8Q-ULLaenM0");

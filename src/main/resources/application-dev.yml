@@ -30,9 +30,9 @@ spring:
           config:
             multi-statement-allow: true
   redis:
-    host: 192.168.0.57
+    host: localhost
     port: 6379
-    password: "X0a#_2q5j4_mYQB_b840fc02d524045429941cc15f59e41cb7be6c52"
+    password: "Xiao!Jun@Feng#A"
     jedis:
       pool:
         max-idle: 8
@@ -53,8 +53,8 @@ verif:
   dayCounts: 100
 redisson:
   timeout: 5000
-  address: 192.168.0.57:6379
-  password: "X0a#_2q5j4_mYQB_b840fc02d524045429941cc15f59e41cb7be6c52"
+  address: localhost:6379
+  password: "Xiao!Jun@Feng#A"
 async:
   executor:
     thread:

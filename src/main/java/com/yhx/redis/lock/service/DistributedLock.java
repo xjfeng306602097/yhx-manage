@@ -1,8 +1,8 @@
 package com.yhx.redis.lock.service;
 
-import java.util.concurrent.TimeUnit;
-
 import org.redisson.api.RLock;
+
+import java.util.concurrent.TimeUnit;
 
 public interface DistributedLock {
 
